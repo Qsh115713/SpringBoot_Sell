@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  jpa:
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+server:
+  servlet:
+    context-path: /sell
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://192.168.37.128/sell?characterEncoding=utf-8&useSSL=false
