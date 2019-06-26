@@ -5,6 +5,7 @@ import com.sky.dto.OrderDTO;
 import com.sky.enums.ResultEnum;
 import com.sky.exception.SellException;
 import com.sky.form.OrderForm;
+import com.sky.service.BuyerService;
 import com.sky.service.OrderService;
 import com.sky.utils.ResultVOUtil;
 import com.sky.viewobject.ResultVO;
@@ -29,6 +30,13 @@ import java.util.Map;
 public class BuyerOrderController {
 
     private OrderService orderService;
+
+    private BuyerService buyerService;
+
+    @Autowired
+    public void setBuyerService(BuyerService buyerService) {
+        this.buyerService = buyerService;
+    }
 
     @Autowired
     public void setOrderService(OrderService orderService) {
@@ -74,6 +82,18 @@ public class BuyerOrderController {
     }
 
     //订单详情
+    @GetMapping("/detail")
+    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
+                                     @RequestParam("orderId") String orderId) {
+        OrderDTO orderDTO = buyerService.findOrder(openid, orderId);
+        return ResultVOUtil.success(orderDTO);
+    }
 
     //取消订单
+    @PostMapping("/cancel")
+    public ResultVO<OrderDTO> cancel(@RequestParam("openid") String openid,
+                                     @RequestParam("orderId") String orderId) {
+        buyerService.cancelOrder(openid, orderId);
+        return ResultVOUtil.success();
+    }
 }

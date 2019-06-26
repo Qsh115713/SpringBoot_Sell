@@ -26,12 +26,12 @@ public class OrderMasterRepositoryTest {
     @Test
     public void saveTest() {
         OrderMaster orderMaster = new OrderMaster();
-        orderMaster.setOrderId("123458");
-        orderMaster.setBuyerName("师妹");
-        orderMaster.setBuyerPhone("18310697604");
+        orderMaster.setOrderId("2");
+        orderMaster.setBuyerName("师弟");
+        orderMaster.setBuyerPhone("16619829664");
         orderMaster.setBuyerAddress("深圳市");
         orderMaster.setBuyerOpenid(OPENID);
-        orderMaster.setOrderAmount(new BigDecimal(2.8));
+        orderMaster.setOrderAmount(new BigDecimal(3.2));
 
         OrderMaster result = repository.save(orderMaster);
         Assert.assertNotNull(result);

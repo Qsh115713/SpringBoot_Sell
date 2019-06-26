@@ -22,9 +22,9 @@ public class ProductDetailRepositoryTest {
     @Test
     public void saveTest() {
         ProductDetail productDetail = new ProductDetail();
-        productDetail.setProductId("123456");
-        productDetail.setProductName("皮蛋粥");
-        productDetail.setProductPrice(new BigDecimal(13.2));
+        productDetail.setProductId("2");
+        productDetail.setProductName("八宝粥");
+        productDetail.setProductPrice(new BigDecimal(1.3));
         productDetail.setProductStock(100);
         productDetail.setProductDescription("好喝！！！");
         productDetail.setProductIcon("http://xxxxx.jpg");

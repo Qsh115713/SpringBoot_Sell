@@ -28,9 +28,8 @@ public class ProductCategoryRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void saveTest() {
-        ProductCategory productCategory = new ProductCategory("女生榜", 4);
+        ProductCategory productCategory = new ProductCategory("甜粥榜", 2);
         ProductCategory result = repository.save(productCategory);
         Assert.assertNotNull(result);
     }

@@ -30,7 +30,7 @@ public class OrderServiceImplTest {
 
     private final String BUYER_OPENID = "110120";
 
-    private final String ORDER_ID = "1551102267816420667";
+    private final String ORDER_ID = "1561539552431425";
 
     @Test
     public void create() {
@@ -44,11 +44,11 @@ public class OrderServiceImplTest {
         List<OrderDetail> orderDetailList = new ArrayList<>();
 
         OrderDetail o1 = new OrderDetail();
-        o1.setProductId("123456");
+        o1.setProductId("101");
         o1.setProductQuantity(10);
 
         OrderDetail o2 = new OrderDetail();
-        o2.setProductId("123457");
+        o2.setProductId("102");
         o2.setProductQuantity(10);
 
         orderDetailList.add(o1);
@@ -63,15 +63,15 @@ public class OrderServiceImplTest {
 
     @Test
     public void findByOrderId() {
-        OrderDTO result = orderService.findByOrderId("1551192134628664975");
+        OrderDTO result = orderService.findByOrderId(ORDER_ID);
         log.info("【查询单个订单】result={}", result);
-        Assert.assertEquals("1551192134628664975", result.getOrderId());
+        Assert.assertEquals(ORDER_ID, result.getOrderId());
     }
 
     @Test
     public void findByOpenid() {
         PageRequest request = PageRequest.of(0, 3);
-        Page<OrderDTO> orderDTOPage = orderService.findByOpenid("ew3euwhd7sjw9diwkq", request);
+        Page<OrderDTO> orderDTOPage = orderService.findByOpenid(BUYER_OPENID, request);
         log.info("【查询多个订单】result={}", orderDTOPage.getContent());
         Assert.assertNotEquals(0, orderDTOPage.getTotalElements());
     }

@@ -1,6 +1,9 @@
 package com.sky.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sky.dataobject.OrderDetail;
+import com.sky.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,6 +15,7 @@ import java.util.List;
  */
 
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     //订单ID
     private String orderId;
@@ -38,9 +42,11 @@ public class OrderDTO {
     private Integer payStatus;
 
     //创建时间
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     //更新时间
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
     //订单详情

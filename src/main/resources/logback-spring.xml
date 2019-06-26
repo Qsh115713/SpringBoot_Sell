@@ -25,7 +25,7 @@
          <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
              <!--路径-->
-            <fileNamePattern>D:\Documents\Logback\sell\info.%d.log</fileNamePattern>
+            <fileNamePattern>C:\Users\shouhaoq\Documents\Logback\sell\info.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
@@ -41,7 +41,7 @@
         <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径-->
-            <fileNamePattern>D:\Documents\Logback\sell\error.%d.log</fileNamePattern>
+            <fileNamePattern>C:\Users\shouhaoq\Documents\Logback\sell\error.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
