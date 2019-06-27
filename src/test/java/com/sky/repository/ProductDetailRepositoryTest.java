@@ -29,7 +29,7 @@ public class ProductDetailRepositoryTest {
         productDetail.setProductDescription("好喝！！！");
         productDetail.setProductIcon("http://xxxxx.jpg");
         productDetail.setProductStatus(0);
-        productDetail.setCategoryType(2);
+        productDetail.setCategoryType("2");
 
         ProductDetail result = repository.save(productDetail);
         Assert.assertNotNull(result);

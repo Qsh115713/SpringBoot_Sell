@@ -57,8 +57,20 @@ public class ProductServiceImplTest {
         productDetail.setProductDescription("好喝！！！");
         productDetail.setProductIcon("http://xxxxx.jpg");
         productDetail.setProductStatus(ProductStatusEnum.DOWN.getCode());
-        productDetail.setCategoryType(3);
+        productDetail.setCategoryType("3");
         ProductDetail result = service.save(productDetail);
         Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void onSale() {
+        String productId = "101";
+        service.onSale(productId);
+    }
+
+    @Test
+    public void offSale() {
+        String productId = "101";
+        service.offSale(productId);
     }
 }

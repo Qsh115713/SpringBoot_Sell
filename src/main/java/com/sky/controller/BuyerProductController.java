@@ -36,7 +36,7 @@ public class BuyerProductController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public ResultVO list() {
         //1、查询所有的上架商品
         List<ProductDetail> productDetailList = productService.findUpList();
@@ -47,8 +47,8 @@ public class BuyerProductController {
             categoryTypeList.add(productInfo.getCategoryType());
         }*/
         //精简（Java8，lambda）
-        List<Integer> categoryTypeList = productDetailList.stream()
-                .map(e -> e.getCategoryType())
+        List<String> categoryTypeList = productDetailList.stream()
+                .map(ProductDetail::getCategoryType)
                 .collect(Collectors.toList());
         List<ProductCategory> productCategoryList = categoryService.findByCategoryTypeIn(categoryTypeList);
         //3、查询封装

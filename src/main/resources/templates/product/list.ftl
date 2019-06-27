@@ -37,10 +37,11 @@
                                 <td>${productDetail.productPrice}</td>
                                 <td>${productDetail.productStock}</td>
                                 <td>${productDetail.productDescription}</td>
-                                <td>${productDetail.categoryType}</td>
+                                <td>${categoryMap[productDetail.categoryType]}</td>
                                 <td>${productDetail.createTime}</td>
                                 <td>${productDetail.updateTime}</td>
-                                <td><a href="/sell/seller/product/index?productId=${productDetail.productId}">修改</a></td>
+                                <td><a href="/sell/seller/product/index?productId=${productDetail.productId}">修改</a>
+                                </td>
                                 <td>
                                     <#if productDetail.getProductStatusMsg() == "在架">
                                         <a href="/sell/seller/product/off_sale?productId=${productDetail.productId}">下架</a>

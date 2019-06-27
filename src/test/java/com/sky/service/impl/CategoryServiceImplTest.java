@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,20 +27,26 @@ public class CategoryServiceImplTest {
 
     @Test
     public void findAll() {
-        List<ProductCategory> productCategoryList = service.findAll();
+        List<ProductCategory> productCategoryList = service.findList();
         Assert.assertNotEquals(0, productCategoryList.size());
     }
 
     @Test
     public void findByCategoryTypeIn() {
-        List<ProductCategory> productCategoryList = service.findByCategoryTypeIn(Arrays.asList(1, 2, 3, 4));
+        List<ProductCategory> productCategoryList = service.findByCategoryTypeIn(Arrays.asList("1", "2"));
         Assert.assertNotEquals(0, productCategoryList.size());
     }
 
     @Test
     public void save() {
-        ProductCategory productCategory = new ProductCategory("女生榜", 4);
+        ProductCategory productCategory = new ProductCategory("女生榜", "4");
         ProductCategory result = service.save(productCategory);
         Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void findCategoryMap() {
+        Map<String, String> map = service.findCategoryMap();
+        Assert.assertNotNull(map);
     }
 }

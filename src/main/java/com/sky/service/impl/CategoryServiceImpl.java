@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 类目
@@ -27,12 +29,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<ProductCategory> findAll() {
+    public List<ProductCategory> findList() {
         return repository.findAll();
     }
 
     @Override
-    public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
+    public Map<String, String> findCategoryMap() {
+        return findList().stream().collect(Collectors.toMap(ProductCategory::getCategoryType, ProductCategory::getCategoryName));
+    }
+
+    @Override
+    public List<ProductCategory> findByCategoryTypeIn(List<String> categoryTypeList) {
         return repository.findByCategoryTypeIn(categoryTypeList);
     }
 

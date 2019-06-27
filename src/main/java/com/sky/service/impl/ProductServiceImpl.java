@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
-            ProductDetail productDetail = repository.findById(cartDTO.getProductId()).orElse(null);;
+            ProductDetail productDetail = repository.findById(cartDTO.getProductId()).orElse(null);
             if (productDetail == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
@@ -76,5 +76,33 @@ public class ProductServiceImpl implements ProductService {
             productDetail.setProductStock(remain);
             repository.save(productDetail);
         }
+    }
+
+    @Override
+    @Transactional
+    public ProductDetail onSale(String productId) {
+        ProductDetail productDetail = repository.findById(productId).orElse(null);
+        if (productDetail == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productDetail.getProductStatus().equals(ProductStatusEnum.UP.getCode())) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productDetail.setProductStatus(ProductStatusEnum.UP.getCode());
+        return repository.save(productDetail);
+    }
+
+    @Override
+    @Transactional
+    public ProductDetail offSale(String productId) {
+        ProductDetail productDetail = repository.findById(productId).orElse(null);
+        if (productDetail == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productDetail.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productDetail.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        return repository.save(productDetail);
     }
 }

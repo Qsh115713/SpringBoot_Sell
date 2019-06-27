@@ -17,7 +17,11 @@ public enum ResultEnum implements SuperEnum {
     CART_EMPTY(18, "购物车为空"),
     ORDER_OWNER_ERROR(19, "该订单不属于当前用户"),
     ORDER_CANCEL_SUCCESS(20, "订单取消成功"),
-    ORDER_FINISH_SUCCESS(21, "订单完结成功");
+    ORDER_FINISH_SUCCESS(21, "订单完结成功"),
+    PRODUCT_STATUS_ERROR(22, "商品状态错误"),
+    PRODUCT_UP_SALE_SUCCESS(23, "商品上架成功"),
+    PRODUCT_OFF_SALE_SUCCESS(24, "商品下架成功"),
+    PRODUCT_INDEX_SUCCESS(25, "商品创建/修改成功");
 
     private Integer code;
 

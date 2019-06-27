@@ -3,6 +3,7 @@ package com.sky.service;
 import com.sky.dataobject.ProductCategory;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 类目
@@ -11,9 +12,11 @@ public interface CategoryService {
 
     ProductCategory findByCategoryId(Integer categoryId);
 
-    List<ProductCategory> findAll();
+    List<ProductCategory> findList();
 
-    List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList);
+    Map<String, String> findCategoryMap();
+
+    List<ProductCategory> findByCategoryTypeIn(List<String> categoryTypeList);
 
     ProductCategory save(ProductCategory productCategory);
 }
