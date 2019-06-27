@@ -5,19 +5,14 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    tomcat:
-      init-s-q-l: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
+    url: jdbc:mysql://192.168.56.102/sell?characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
+    tomcat:
+      init-s-q-l: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
   jackson:
     default-property-inclusion: non_null  #使返回的Json数据不包含null值
 
 server:
   servlet:
     context-path: /sell
-
----
-spring:
-  profiles: dev
-  datasource:
-    url: jdbc:mysql://192.168.56.102/sell?characterEncoding=utf-8&useSSL=false

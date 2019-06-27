@@ -1,8 +1,11 @@
 package com.sky.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sky.dataobject.OrderDetail;
+import com.sky.enums.OrderStatusEnum;
+import com.sky.enums.PayStatusEnum;
+import com.sky.utils.EnumUtil;
 import com.sky.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -51,4 +54,14 @@ public class OrderDTO {
 
     //订单详情
     private List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public String getOrderStatusMsg() {
+        return EnumUtil.getMsgByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public String getPayStatusMsg() {
+        return EnumUtil.getMsgByCode(payStatus, PayStatusEnum.class);
+    }
 }

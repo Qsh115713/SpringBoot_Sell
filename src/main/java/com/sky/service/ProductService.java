@@ -12,9 +12,9 @@ public interface ProductService {
     ProductDetail findByProductId(String productId);
 
     //查询在架的商品
-    List<ProductDetail> findUpAll();
+    List<ProductDetail> findUpList();
 
-    Page<ProductDetail> findAll(Pageable pageable);
+    Page<ProductDetail> findList(Pageable pageable);
 
     ProductDetail save(ProductDetail productDetail);
 

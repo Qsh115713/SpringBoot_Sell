@@ -3,7 +3,7 @@ package com.sky.enums;
 import lombok.Getter;
 
 @Getter
-public enum ResultStatusEnum {
+public enum ResultStatusEnum implements SuperEnum {
     SUCCESS(0, "成功"),
     FAILURE(400, "失败");
 

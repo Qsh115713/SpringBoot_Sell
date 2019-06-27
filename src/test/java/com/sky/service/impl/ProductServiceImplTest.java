@@ -33,14 +33,14 @@ public class ProductServiceImplTest {
 
     @Test
     public void findUpAll() {
-        List<ProductDetail> lists = service.findUpAll();
+        List<ProductDetail> lists = service.findUpList();
         Assert.assertNotEquals(0, lists.size());
     }
 
     @Test
     public void findAll() {
         PageRequest request = PageRequest.of(1, 2);
-        Page<ProductDetail> productInfoPage = service.findAll(request);
+        Page<ProductDetail> productInfoPage = service.findList(request);
         for (ProductDetail item : productInfoPage) {
             System.out.println(item.toString());
         }
