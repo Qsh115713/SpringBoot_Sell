@@ -12,6 +12,9 @@ spring:
       init-s-q-l: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
   jackson:
     default-property-inclusion: non_null  #使返回的Json数据不包含null值
+  redis:
+    host: 192.168.56.102
+    port: 6379
 
 server:
   servlet:
