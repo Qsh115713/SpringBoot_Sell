@@ -21,7 +21,7 @@ public class CategoryServiceImplTest {
 
     @Test
     public void findByCategoryId() {
-        ProductCategory productCategory = service.findByCategoryId(1);
+        ProductCategory productCategory = service.findByCategoryId("1");
         Assert.assertEquals(1, productCategory == null ? 0 : productCategory.getCategoryId());
     }
 

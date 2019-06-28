@@ -1,7 +1,9 @@
 package com.sky.dataobject;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sky.enums.OrderStatusEnum;
 import com.sky.enums.PayStatusEnum;
+import com.sky.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -45,9 +47,11 @@ public class OrderMaster {
     private Integer payStatus = PayStatusEnum.WAIT.getCode();
 
     //创建时间
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     //更新时间
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
 }

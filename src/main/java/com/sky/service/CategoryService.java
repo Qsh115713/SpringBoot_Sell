@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface CategoryService {
 
-    ProductCategory findByCategoryId(Integer categoryId);
+    ProductCategory findByCategoryId(String categoryId);
 
     List<ProductCategory> findList();
 

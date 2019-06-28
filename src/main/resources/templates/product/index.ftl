@@ -41,9 +41,9 @@
                         </div>
                         <div class="form-group">
                             <label>类目</label>
-                            <select name="category" class="form-control">
+                            <select name="categoryType" class="form-control">
                                 <#list categoryMap?keys as categoryType>
-                                    <option value="categoryType"
+                                    <option value="${categoryType}"
                                             <#if (productDetail.categoryType)?? && productDetail.categoryType == categoryType>
                                                 selected
                                             </#if>

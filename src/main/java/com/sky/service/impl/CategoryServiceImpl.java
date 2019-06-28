@@ -24,7 +24,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public ProductCategory findByCategoryId(Integer categoryId) {
+    public ProductCategory findByCategoryId(String categoryId) {
         return repository.findById(categoryId).orElse(null);
     }
 

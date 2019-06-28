@@ -21,7 +21,8 @@ public enum ResultEnum implements SuperEnum {
     PRODUCT_STATUS_ERROR(22, "商品状态错误"),
     PRODUCT_UP_SALE_SUCCESS(23, "商品上架成功"),
     PRODUCT_OFF_SALE_SUCCESS(24, "商品下架成功"),
-    PRODUCT_INDEX_SUCCESS(25, "商品创建/修改成功");
+    PRODUCT_SAVE_SUCCESS(25, "商品创建/修改成功"),
+    CATEGORY_SAVE_SUCCESS(26, "类目创建/修改成功");
 
     private Integer code;
 

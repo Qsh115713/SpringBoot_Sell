@@ -23,7 +23,7 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     public void findByIdTest() {
-        Optional<ProductCategory> categoryOptional = repository.findById(1);
+        Optional<ProductCategory> categoryOptional = repository.findById("1");
         System.out.println(categoryOptional.isPresent() ? categoryOptional.get().toString() : "Nothing.");
     }
 
