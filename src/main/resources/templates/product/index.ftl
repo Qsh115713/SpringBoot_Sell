@@ -52,7 +52,8 @@
                                 </#list>
                             </select>
                         </div>
-                        <input hidden type="text" name="productId" value="${(productDetail.productId)!''}"> <!--为了修改的时候有id，但不想显示出来-->
+                        <input hidden type="text" name="productId" value="${(productDetail.productId)!''}">
+                        <!--为了修改的时候有id，但不想显示出来-->
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
                 </div>

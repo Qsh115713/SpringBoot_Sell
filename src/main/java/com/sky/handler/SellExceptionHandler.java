@@ -13,8 +13,8 @@ public class SellExceptionHandler {
     @ExceptionHandler(value = SellerAuthorizeException.class)
     public ModelAndView handlerAuthorizeException() {
         return new ModelAndView("redirect"
-        .concat(ProjectConstant.projectUrl)
-        .concat("/seller/login"));
+                .concat(ProjectConstant.projectUrl)
+                .concat("/seller/login"));
         //TODO
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.UUID;
@@ -45,7 +46,7 @@ public class SellerUserController {
                               Map<String, Object> map) {
         SellerDetail sellerDetail = sellerService.findSellerDetailByOpenid(openid);
         if (sellerDetail == null) {
-            map.put("msg", ResultEnum.LOGIN_FAIL);
+            map.put("msg", ResultEnum.LOGIN_FAIL.getMsg());
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error");
         }
@@ -56,13 +57,25 @@ public class SellerUserController {
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, token), openid, expire, TimeUnit.SECONDS);
 
         //设置到Cookie
-        CookieUtil.set(response, CookieConstant.TOKEN, token);
+        CookieUtil.set(response, CookieConstant.TOKEN, token, CookieConstant.EXPIRE);
 
         return new ModelAndView("redirect:" + ProjectConstant.projectUrl + "/sell/seller/order/list");
     }
 
     @GetMapping("logout")
-    public void logout() {
+    public ModelAndView logout(HttpServletRequest request,
+                               HttpServletResponse response,
+                               Map<String, Object> map) {
+        Cookie cookie = CookieUtil.get(request, CookieConstant.TOKEN);
+        if (cookie != null) {
+            //清除Redis
+            redisTemplate.opsForValue().getOperations().delete(String.format(RedisConstant.TOKEN_PREFIX, cookie.getValue()));
 
+            //清除Cookie
+            CookieUtil.set(response, CookieConstant.TOKEN, null, 0);
+        }
+        map.put("msg", ResultEnum.LOGOUT_SUCCESS.getMsg());
+        map.put("url", "/sell/seller/order/list");
+        return new ModelAndView("common/success", map);
     }
 }

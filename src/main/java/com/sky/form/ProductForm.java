@@ -3,6 +3,7 @@ package com.sky.form;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
@@ -15,11 +16,11 @@ public class ProductForm {
     private String productName;
 
     //单价
-    @NotEmpty
+    @NotNull
     private BigDecimal productPrice;
 
     //库存
-    @NotEmpty
+    @NotNull
     private Integer productStock;
 
     //描述

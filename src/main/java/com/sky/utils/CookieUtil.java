@@ -13,10 +13,11 @@ public class CookieUtil {
 
     public static void set(HttpServletResponse response,
                            String name,
-                           String value) {
+                           String value,
+                           Integer maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
-        cookie.setMaxAge(CookieConstant.EXPIRE);
+        cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
     }
 
@@ -30,7 +31,7 @@ public class CookieUtil {
         Map<String, Cookie> cookieMap = new HashMap<>();
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
-            for (Cookie cookie: cookies) {
+            for (Cookie cookie : cookies) {
                 cookieMap.put(cookie.getName(), cookie);
             }
         }

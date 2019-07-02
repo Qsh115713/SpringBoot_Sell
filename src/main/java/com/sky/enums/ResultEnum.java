@@ -23,7 +23,8 @@ public enum ResultEnum implements SuperEnum {
     PRODUCT_OFF_SALE_SUCCESS(24, "商品下架成功"),
     PRODUCT_SAVE_SUCCESS(25, "商品创建/修改成功"),
     CATEGORY_SAVE_SUCCESS(26, "类目创建/修改成功"),
-    LOGIN_FAIL(27, "登录失败");
+    LOGIN_FAIL(27, "登录失败"),
+    LOGOUT_SUCCESS(28, "登出成功");
 
     private Integer code;
 
