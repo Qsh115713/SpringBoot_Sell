@@ -6,8 +6,6 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -40,6 +38,12 @@ public class ProductCategory {
     }
 
     public ProductCategory(String categoryName, String categoryType) {
+        this.categoryName = categoryName;
+        this.categoryType = categoryType;
+    }
+
+    public ProductCategory(String categoryId, String categoryName, String categoryType) {
+        this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.categoryType = categoryType;
     }

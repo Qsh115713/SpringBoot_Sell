@@ -1,7 +1,9 @@
 package com.sky.exception;
 
 import com.sky.enums.ResultEnum;
+import lombok.Getter;
 
+@Getter
 public class SellException extends RuntimeException {
     private Integer code;
 
