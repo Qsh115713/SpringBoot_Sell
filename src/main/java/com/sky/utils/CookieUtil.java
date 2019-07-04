@@ -1,8 +1,5 @@
 package com.sky.utils;
 
-import com.sky.constant.CookieConstant;
-import com.sky.constant.RedisConstant;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
