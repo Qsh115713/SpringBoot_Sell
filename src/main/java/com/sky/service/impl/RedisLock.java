@@ -19,9 +19,6 @@ public class RedisLock {
 
     /**
      * 加锁
-     *
-     * @param key
-     * @param value 当前时间+超时时间
      */
     public boolean lock(String key, String value) {
         if (redisTemplate.opsForValue().setIfAbsent(key, value)) {
@@ -34,9 +31,7 @@ public class RedisLock {
                 && Long.parseLong(currentValue) < System.currentTimeMillis()) {
             //获取上一个锁的时间
             String oldValue = redisTemplate.opsForValue().getAndSet(key, value);
-            if (!StringUtils.isEmpty(oldValue) && oldValue.equals(currentValue)) {
-                return true;
-            }
+            return (!StringUtils.isEmpty(oldValue) && oldValue.equals(currentValue));
         }
 
         return false;
@@ -44,9 +39,6 @@ public class RedisLock {
 
     /**
      * 解锁
-     *
-     * @param key
-     * @param value
      */
     public void unlock(String key, String value) {
         try {
@@ -55,7 +47,7 @@ public class RedisLock {
                 redisTemplate.opsForValue().getOperations().delete(key);
             }
         } catch (Exception e) {
-            log.error("【redis分布式锁】解锁异常, {}", e);
+            log.error("【redis分布式锁】解锁异常, {}", e.getMessage());
         }
     }
 

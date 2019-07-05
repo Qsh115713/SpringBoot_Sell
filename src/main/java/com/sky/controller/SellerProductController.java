@@ -9,6 +9,8 @@ import com.sky.service.ProductService;
 import com.sky.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -97,6 +99,8 @@ public class SellerProductController {
 
     //新建或更新
     @PostMapping("/save")
+    //@CachePut(cacheNames = "product", key = "123")
+    @CacheEvict(cacheNames = "product", key = "123")
     public ModelAndView save(@Valid ProductForm productForm,
                              BindingResult bindingResult,
                              Map<String, Object> map) {

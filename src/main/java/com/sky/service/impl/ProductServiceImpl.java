@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+//@CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
 
     private ProductDetailRepository repository;
@@ -26,6 +27,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    //@Cacheable(key = "123")
     public ProductDetail findByProductId(String productId) {
         return repository.findById(productId).orElse(null);
     }
@@ -41,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    //@CachePut(key = "123")
     public ProductDetail save(ProductDetail productDetail) {
         return repository.save(productDetail);
     }

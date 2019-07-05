@@ -24,9 +24,9 @@ public class SecKillServiceImpl implements SecKillService {
     /**
      * 国庆活动，皮蛋粥特价，限量100000份
      */
-    static Map<String, Integer> products;
-    static Map<String, Integer> stock;
-    static Map<String, String> orders;
+    private static Map<String, Integer> products;
+    private static Map<String, Integer> stock;
+    private static Map<String, String> orders;
 
     static {
         /**
@@ -52,8 +52,12 @@ public class SecKillServiceImpl implements SecKillService {
     }
 
     @Override
-    public synchronized void orderProductMockDiffUser(String productId) {
+    public void orderProductMockDiffUser(String productId) {
         //加锁
+        String time = String.valueOf(System.currentTimeMillis() + TIMEOUT);
+        if (!redisLock.lock(productId, time)) {
+            throw new SellException(101, "人太多了，稍后再试。");
+        }
 
         //1.查询该商品库存，为0则活动结束。
         int stockNum = stock.get(productId);
@@ -73,6 +77,6 @@ public class SecKillServiceImpl implements SecKillService {
         }
 
         //解锁
-
+        redisLock.unlock(productId, time);
     }
 }
